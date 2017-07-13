@@ -126,7 +126,7 @@ module.exports = {
                     return callback(new Error('Invalid environment ' + encodeURIComponent(info[0])));
                 }
                 wreck.post(url, {
-                    payload: util.format('grant_type=refresh_token&refresh_token=%s', encodeURIComponent(info[1])),
+                    payload: util.format('grant_type=refresh_token&refresh_token=%s&scope=%s', encodeURIComponent(info[1]),encodeURIComponent('https://uri.paypal.com/services/paypalhere')),
                     json: 'force',
                     headers: {
                         'Authorization': 'Basic ' + new Buffer(cfg.clientId + ':' + cfg.secret).toString('base64'),
